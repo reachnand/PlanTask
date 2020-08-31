@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="ab.css">
+    <title>Tasklist</title>
+    <script src="./validation.js"></script>
+    
+</head>
+<body>  
+    <input type="text" id="inputCityName" placeholder="Enter city name">
+    <button id="getWeather">"Weather for perfect plan"</button>
+    <div id="info"></div>
+
+<h1 class="mainHeading">Task Planner</h1>
+<div id ="main-container">
+    <div id="taskcontainer">
+        <div class="card">
+            <h1 class="heading">Your Todo List</h1>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#addTaskModal">Add Task</button>
+<div id="todolist"></div>
+<!-- Modal -->
+<div id="addTaskModal" class="modal">
+<div class="modal-dialog">
+<div class="modal-content">
+    <div class="modal-header">
+        
+        <h4>Task Planner </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+<div class="modal-body">
+    <form> 
+        <!-- id=submitForm onsubmit="validation()"> -->
+        <div>
+            <label for="taskname">Task Name :</label>
+            <input type="text" class="form-control" placeholder="Enter Task Name" id="tname">
+            <span id="nameErrMsg"></span>
+            </div>
+            
+            <div>
+            <label for="InputDetails">Description:</label>
+            <textarea class="form-control" rows="2" id="desc"></textarea>
+            <span id="descErrMsg"></span>
+        </div>
+        <div>
+            <label for="inputname">Due Date:</label>
+            <input type="datetime-local" class="form-control" id ="dueDate">
+            <span id="dueDateErrMsg"></span>
+        </div>
+        <div>
+            <label for="inputname">Assign to</label>                        
+            <input type="text" class="form-control" id="assign"></input>          
+            <span id="assignErrMsg"></span>
+        </div>  
+        <div>
+                <label for="inputname">Status</label>
+                <input type="text" id="status"></input>                           
+                <span id="statusErrMsg"></span>
+        </div>
+    </form>  
+</div>
+        <div class="modal-footer">
+        <button id="addBtn" onclick="validation()">Add</button>
+        <!-- <input id="addBtn" type="button" value="Add" onclick="validation(); validation();"> -->
+        <button onclick="validation()">Check</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>          
+    </div>
+
+    </div>
+    </div> 
+    <!-- edit Task Modal -->
+    <div class="modal" id="editTaskModal"> 
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Task</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+            
+<div class="modal-body">
+<form id="submitForm">
+    <div>
+    <input type="hidden" class="form-control" id="editTaskId">
+        <label for="edittaskname">Task Name :</label>
+        <input type="text" class="form-control" placeholder="Enter Task Name" id="edittaskname">
+        <span id="enameErrMsg"></span>
+    </div>
+
+        <div>
+        <label for="editdesc">Description:</label>
+        <textarea class="form-control" rows="2" id="editdesc"></textarea>
+        <span id="edescErrMsg"></span>
+        </div>
+
+        <div>
+        <label for="editdueDate">Due Date:</label>
+        <input type="datetime-local" class="form-control" id ="editdueDate">
+        <span id="edueDateErrMsg"></span>
+        </div>
+        <div>
+            <label for="editassign">Assign to</label>                        
+            <input type="text" class="form-control" id="editassign"></input>          
+            <span id="eassignErrMsg"></span>
+        </div>  
+        <div>
+            <label for="editstatus">Status</label>
+            <input type="text" id="editstatus"></input>                           
+            <span id="estatusErrMsg"></span>
+            </div>
+            </form>
+
+            <div class="modal-footer">
+                    
+            <!-- Update button -->
+            <input type="button" id="updateTaskBtn" value="Update" >
+        
+            <!-- <button type="button" id="updateTaskBtn" class="btn btn-primary float-right">Update</button> -->
+            <button onclick="editvalidation()">Check</button>
+        </div>
+</div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="ab.js"></script>
+    
+    <script src="./weather.js"></script>
+    
+</body>
+</html>
